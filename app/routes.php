@@ -11,7 +11,12 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+//Route main (Index)
+Route::any('/', array("as" => "home", "uses" => "UserController@viewAll"));
+
+//Routes to Registration views
+Route::get('user/add', array("as" => "add", "uses" => "UserController@getAdd"));
+Route::post('user/add', "UserController@postAdd");
+
+//Route to list perfil
+Route::get('perfil/{user_id?}', array("as" => "perfil", "uses" => "UserController@listPeril"));
